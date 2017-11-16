@@ -2,6 +2,9 @@
 var builder = require("botbuilder");
 var botbuilder_azure = require("botbuilder-azure");
 var path = require('path');
+var team = require('./teams');
+
+console.log("testing" + team);
 
 var useEmulator = (process.env.NODE_ENV == 'development');
 
@@ -16,7 +19,7 @@ var bot = new builder.UniversalBot(connector);
 bot.localePath(path.join(__dirname, './locale'));
 
 bot.dialog('/', function (session) {
-    session.send('You said this: ' + session.message.text);
+    session.send('You said this: ' + team + session.message.text);
 });
 
 if (useEmulator) {
